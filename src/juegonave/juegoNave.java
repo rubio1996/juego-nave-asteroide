@@ -263,6 +263,76 @@ public class juegoNave extends Application {
                     }
                 }  
             }
+            for(int i=0; i<listabala.size(); i++){
+              //coje una bala de la lista
+                Bala bala = listabala.get(i);
+                bala.moverBala();
+                //recorre lista de asteroide
+                for (int o=0; o<listaasteroides.size(); o++){
+                    //coje un asteroide de la lista
+                    asteroide asteroide1 = listaasteroides.get(o);
+                    //guardo la colision llamadpunto
+                    punto = Shape.intersect(bala.getPolygon(),asteroide1.getPolygon());
+                    //es un boleean para comprobar si la variable punto esta vacia
+                    boolean puntoVacio = punto.getBoundsInLocal().isEmpty();
+                    //si el bolean no esta vacio
+                    if (puntoVacio == false){
+                        //cojemos el asteroide
+                        borrarasteroide = listaasteroides.get(o);
+                        //cojemos la bala
+                        borrarbala = listabala.get(i);
+                        //borramos la bala 
+                        listabala.remove(borrarbala);
+                        //borramos el asteroide
+                        listaasteroides.remove(borrarasteroide);
+                        root.getChildren().remove(asteroide1.getPolygon());
+                        root.getChildren().remove(bala.getPolygon());
+                        asteroide asteroide3 = new asteroide(1);
+                        asteroide asteroide4 = new asteroide(1);
+                        listaasteroides.add(asteroide3);
+                        root.getChildren().add(asteroide3.getPolygon());
+                        listaasteroides.add(asteroide4);
+                        root.getChildren().add(asteroide4.getPolygon());
+                        score++;
+                        textScore.setText(String.valueOf(score));
+                    }
+                }  
+            }
+            for(int i=0; i<listabala.size(); i++){
+              //coje una bala de la lista
+                Bala bala = listabala.get(i);
+                bala.moverBala();
+                //recorre lista de asteroide
+                for (int o=0; o<listaasteroides.size(); o++){
+                    //coje un asteroide de la lista
+                    asteroide asteroide2 = listaasteroides.get(o);
+                    //guardo la colision llamadpunto
+                    punto = Shape.intersect(bala.getPolygon(),asteroide2.getPolygon());
+                    //es un boleean para comprobar si la variable punto esta vacia
+                    boolean puntoVacio = punto.getBoundsInLocal().isEmpty();
+                    //si el bolean no esta vacio
+                    if (puntoVacio == false){
+                        //cojemos el asteroide
+                        borrarasteroide = listaasteroides.get(o);
+                        //cojemos la bala
+                        borrarbala = listabala.get(i);
+                        //borramos la bala 
+                        listabala.remove(borrarbala);
+                        //borramos el asteroide
+                        listaasteroides.remove(borrarasteroide);
+                        root.getChildren().remove(asteroide2.getPolygon());
+                        root.getChildren().remove(bala.getPolygon());
+                        asteroide asteroide5 = new asteroide(1);
+                        asteroide asteroide6 = new asteroide(1);
+                        listaasteroides.add(asteroide5);
+                        root.getChildren().add(asteroide5.getPolygon());
+                        listaasteroides.add(asteroide6);
+                        root.getChildren().add(asteroide6.getPolygon());
+                        score++;
+                        textScore.setText(String.valueOf(score));
+                    }
+                }  
+            }
             nave.creacioncoseno();
             nave.CreacionSeno();
             nave.aceleracion();

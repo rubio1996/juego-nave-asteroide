@@ -47,10 +47,6 @@ double seno;
     variaX = Math.sin(radianes);
     variaY = Math.cos(radianes);
     
-    
-    
-    
-    
     cuerpoVala.setLayoutX(balaX);
     cuerpoVala.setLayoutY(balaY);
     balaX += variaX * velBala;
