@@ -106,7 +106,7 @@ public class juegoNave extends Application {
         
         ArrayList<asteroide> listaasteroides = new ArrayList(); 
         for (int a = 0; a < numeroAsteroides; a++) {
-            asteroide asteroide = new asteroide(300, 500, 2 );
+            asteroide = new asteroide(2);
             listaasteroides.add(asteroide);
          root.getChildren().add(asteroide.getPolygon());
            
@@ -206,7 +206,7 @@ public class juegoNave extends Application {
             nave.getGroup().setLayoutY(nave.getGroup().getLayoutY()+nave.velocidadY);
             nave.getGroup().setRotate(nave.rotacionNave());
             for(asteroide asteroideActual : listaasteroides){
-                asteroideActual.rotarAsteroide();
+                asteroideActual.rotarYMoverAsteroide();
                 asteroideActual.salirPantalla(nave.SCENE_TAM_X, nave.SCENE_TAM_Y);
                 nave.chocarNaveAsteroide(asteroideActual, root);
                 //si la nave choca con el asteroide
@@ -250,6 +250,14 @@ public class juegoNave extends Application {
                         listabala.remove(borrarbala);
                         //borramos el asteroide
                         listaasteroides.remove(borrarasteroide);
+                        root.getChildren().remove(asteroide.getPolygon());
+                        root.getChildren().remove(bala.getPolygon());
+                        asteroide asteroide1 = new asteroide(1.5 );
+                        asteroide asteroide2 = new asteroide(1.5 );
+                        listaasteroides.add(asteroide1);
+                        root.getChildren().add(asteroide1.getPolygon());
+                        listaasteroides.add(asteroide2);
+                        root.getChildren().add(asteroide2.getPolygon());
                         score++;
                         textScore.setText(String.valueOf(score));
                     }

@@ -16,8 +16,6 @@ import javafx.scene.shape.Rectangle;
 public class Bala {
 double balaX = 0.0;
 double balaY = 0.0;
-double velBalaY = 10;
-double velBalaX = 10;
 double velBala = 10;
 double potenciaNave = 0.2;
 public boolean disparar = false;
@@ -33,26 +31,31 @@ double seno;
         0.5, -7.5,
         0.5, 7.5,
         -0.5, 7.5});
-        variaX=Math.sin(Math.toRadians(angulo));
-        variaY=Math.cos(Math.toRadians(angulo))*-1;
+        
         cuerpoVala.setId("rectangle1");
         cuerpoVala.setFill(Color.web("#FF0000"));
         cuerpoVala.setVisible(true);
-        cuerpoVala.setLayoutX(x);
-        cuerpoVala.setLayoutY(y);
-        cuerpoVala.setRotate(angulo);
         balaX = x;
         balaY = y;
         angulo1 = angulo;
-        velBalaX = velBalaX+velBala*variaX;
-        velBalaX = velBalaY+velBala*variaX;
+        
     }
     public void moverBala()
-    {   
+    {
+    double resto = angulo1 % 360;  
+    double radianes = Math.toRadians(resto);
+    variaX = Math.sin(radianes);
+    variaY = Math.cos(radianes);
+    
+    
+    
+    
+    
     cuerpoVala.setLayoutX(balaX);
     cuerpoVala.setLayoutY(balaY);
-    balaX += velBalaX;
-    balaY += velBalaY;
+    balaX += variaX * velBala;
+    balaY += -(variaY * velBala);
+    cuerpoVala.setRotate(angulo1);
     }
     public Polygon getPolygon() {
         return cuerpoVala;
